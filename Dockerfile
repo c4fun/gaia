@@ -1,6 +1,7 @@
 FROM maven:3-jdk-14 as BUILD
 
 COPY . /usr/src/app
+COPY dockerConfig/settings.xml /usr/share/maven/conf/settings.xml
 RUN mvn --batch-mode -DskipTests -f /usr/src/app/pom.xml clean package
 
 FROM openjdk:16-jdk
